@@ -14,7 +14,8 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                        <a href="{{route('job.create')}}" class="btn btn-info" style="margin-right: 50px">Post a Job</a>
+                        <a href="{{route('job.index')}}" class="btn btn-info">See previous posted jobs</a>
                 </div>
             </div>
         </div>
