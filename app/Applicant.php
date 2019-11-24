@@ -18,6 +18,13 @@ class Applicant extends Authenticatable
     protected $fillable = [
         'first_name','last_name', 'email', 'password',
     ];
+    public function jobs(){
+        return $this->belongsToMany(Job::class);
+    }
+    public function profile()
+    {
+        return $this->hasOne('App\Profile');
+    }
 
     /**
      * The attributes that should be hidden for arrays.

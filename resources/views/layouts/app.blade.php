@@ -73,6 +73,20 @@
         </nav>
 
         <main class="py-4">
+            @if(session()->has('success'))
+                <div class="container">
+                    <div class="alert alert-success">
+                        {{session()->get('success')}}
+                    </div>
+                </div>
+            @endif
+                @if(session()->has('warning'))
+                    <div class="container">
+                        <div class="alert alert-warning">
+                            {{session()->get('warning')}}
+                        </div>
+                    </div>
+                @endif
             @yield('content')
         </main>
     </div>

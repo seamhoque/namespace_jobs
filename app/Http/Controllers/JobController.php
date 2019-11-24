@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Applicant;
 use App\Job;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -103,8 +105,28 @@ class JobController extends Controller
         //
     }
 
-    public function show_all_jobs(){
+    public function show_all_jobs($id){
+
+        /*dd($id);*/
         $jobs = Job::all();
-        return view('Applicant.show_job',compact('jobs'));
+        $applicant = Applicant::find($id)->jobs()->get();
+        /*dd($applicant);*/
+
+        return view('Applicant.show_job',compact('jobs','applicant'));
+    }
+
+    public function show_applicants(Request $request){
+        /*dd($request);*/
+
+        $applicants = Job::find($request->job_id)->applicants()->get();
+        /*dd($applicants);*/
+        return view('company.show_applicants',compact('applicants'));
+    }
+
+    public function applicant_details(Request $request){
+        /*dd($request->applicant_id);*/
+        $profile = Applicant::find($request->applicant_id)->profile()->first();
+        /*dd($profile);*/
+        return view('company.applicant_profile',compact('profile'));
     }
 }

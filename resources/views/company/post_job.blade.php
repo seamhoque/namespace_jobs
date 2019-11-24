@@ -45,6 +45,8 @@
                                 </div>
 
                                 <button type="submit" class="btn btn-info "> POST </button>
+                                <a href="{{route('home')}}" class="btn btn-info">Go Back </a>
+
                             </form>
                     </div>
                 </div>

@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    {{--{{dd($applicant)}}--}}
 
 
     <div class="container">
@@ -19,27 +18,19 @@
                             <th>Salary </th>
                             <th>Location</th>
                             <th>Country</th>
+                            <th>Status</th>
                             </thead>
                             <tbody>
 
                             @foreach($jobs as $job)
-
-                                        <tr>
-                                            <td>{{$job->job_title}}</td>
-                                            <td>{{$job->job_description}}</td>
-                                            <td>{{$job->salary}}</td>
-                                            <td>{{$job->location}}</td>
-                                            <td>{{$job->country}}</td>
-                                            <td>
-
-                                                <form action="{{route('job_apply')}}" method="post">
-                                                    @csrf
-                                                    <input type="hidden" name="job_id" value="{{$job->id}}">
-                                                    <button type="submit" class="btn btn-info">Apply</button>
-                                                </form>
-                                            </td>
-                                        </tr>
-
+                                <tr>
+                                    <td>{{$job->job_title}}</td>
+                                    <td>{{$job->job_description}}</td>
+                                    <td>{{$job->salary}}</td>
+                                    <td>{{$job->location}}</td>
+                                    <td>{{$job->country}}</td>
+                                    <td><b>Applied</b> </td>
+                                </tr>
                             @endforeach
 
                             </tbody>

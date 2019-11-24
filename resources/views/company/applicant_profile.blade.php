@@ -10,16 +10,11 @@
                     <div class="card-header">Applicant Resume</div>
 
                     <div class="card-body">
-                        @if(isset($profile))
+
                             <p>Skills: <b>{{$profile->skills}}</b></p>
                             <p>Image: <img src="{{asset('storage/'.$profile->profile_picture)}}" width="120px" height="120"></p>
-                            <p>CV Status: Updated</p>
-
-                            <a href="{{route('profile.edit',$profile->id)}}" class="btn btn-info">Click Here to Update Profile </a>
-                            @else
-                            <a href="{{route('profile.create')}}" class="btn btn-info">Create a profile first </a>
-                            @endif
-                            <a href="{{route('applicant.home')}}" class="btn btn-info">Go Back </a>
+                        <a href="{{asset('storage/'.$profile->resume)}}" class="btn btn-info">Download resume</a>
+                        <a href="{{route('applicant.home')}}" class="btn btn-info">Go Back </a>
 
 
                     </div>

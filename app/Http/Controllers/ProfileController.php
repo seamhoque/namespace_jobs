@@ -19,17 +19,9 @@ class ProfileController extends Controller
     }
     public function index()
     {
-        /*dd("inside");*/
-        /*return view('Applicant.profile.index');*/
-        /*dd(Auth::id());*/
-        $profile = Profile::find(Auth::id());
 
-        /*if(isset($profile)){
-            $profile=Profile::findOrFail(Auth::id());
-        }
+        $profile = Profile::where('applicant_id',Auth::id())->first();
 
-        else
-            $profile = null;*/
         return view('Applicant.profile.index',compact('profile'));
 
     }
@@ -53,6 +45,12 @@ class ProfileController extends Controller
     public function store(Request $request)
     {
         /*dd($request);*/
+        $validatedData = $request->validate([
+            'skills' => 'required',
+            'profile_picture' => 'required',
+            'resume' => 'required'
+
+        ]);
         $profile_picture = $request->profile_picture->store("profile_picture");
         $resume = $request->resume->store("resume");
         $profile = [
@@ -104,8 +102,12 @@ class ProfileController extends Controller
      */
     public function update(Request $request, Profile $profile)
     {
-        /*dd($request);*/
-        /*$data = $request->only(['title','description','post_content','published_at']);*/
+        $validatedData = $request->validate([
+            'skills' => 'required',
+            'profile_picture' => 'required',
+            'resume' => 'required'
+
+        ]);
         $profile_picture = $request->profile_picture->store("profile_picture");
         $resume = $request->resume->store("resume");
         $data =[

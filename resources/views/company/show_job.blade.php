@@ -32,7 +32,7 @@
                                     {{--<td>
                                         <a href="{{}}" class="btn btn-info ">Edit</a>
                                     </td>--}}
-                                    <td>
+                                   {{-- <td>
                                         <form action="" method="post">
                                             @csrf
                                             @method('DELETE')
@@ -41,12 +41,22 @@
                                                 Trash
                                             </button>
                                         </form>
+                                    </td>--}}
+                                    <td>
+                                        <form action="{{route('show_applicants')}}" method="post">
+                                            @csrf
+                                            <input type="hidden" name="job_id" value="{{$job->id}}">
+                                            <button class="btn btn-info" type="submit">
+                                                See applicants
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach
 
                             </tbody>
                         </table>
+                        <a href="{{route('applicant.home')}}" class="btn btn-info">Go Back </a>
 
 
                     </div>

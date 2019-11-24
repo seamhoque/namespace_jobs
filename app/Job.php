@@ -7,4 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Job extends Model
 {
     protected $fillable = ['user_id','job_title','job_description','salary','location','country'];
+    public function applicants(){
+        return $this->belongsToMany(Applicant::class);
+    }
 }

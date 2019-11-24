@@ -29,6 +29,7 @@
 
 
                             <button type="submit" class="btn btn-info "> Update </button>
+                            <a href="{{route('applicant.home')}}" class="btn btn-info">Go Back </a>
                         </form>
                     </div>
                 </div>
