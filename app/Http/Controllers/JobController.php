@@ -102,4 +102,9 @@ class JobController extends Controller
     {
         //
     }
+
+    public function show_all_jobs(){
+        $jobs = Job::all();
+        return view('Applicant.show_job',compact('jobs'));
+    }
 }
